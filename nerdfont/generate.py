@@ -17,11 +17,11 @@ INDENT = " " * 4
 
 def add_icon(out, icon_name, icon):
     # dict entry with character code
-    entry = f"'{icon_name}': '\\u{icon['code']}',"
-    indent_to = 80 - 3 - len(INDENT)
+    entry = f"'{icon_name}': '\\u{icon['char']}',"
+    indent_to = 80 - 10 - len(INDENT)
     entry += " " * (indent_to - len(entry))  # pad
     # comment with nerd font icon
-    entry += f"# {icon['char']}"
+    entry += f"# {icon['code']}"
 
     out.write(INDENT + entry + "\n")
 

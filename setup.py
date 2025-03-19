@@ -6,7 +6,7 @@ import nerdfont
 with open("readme.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-REL_VERSION = "9"
+REL_VERSION = "10"
 
 setup(
     name="nerdfont",
