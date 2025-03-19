@@ -30,7 +30,7 @@ def main(uri, version):
     out.write("# This file was generated automatically by nerdfont-python\n")
     out.write(f"# It contains the icon set from: {site}\n")
     out.write("\n")
-    out.write(f"VERSION = '{version}'\n")
+    out.write(f"__version__ = '{version}'\n")
     out.write("\n")
     out.write("icons = {\n")
     for icon_name, icon in icons_dict.items():

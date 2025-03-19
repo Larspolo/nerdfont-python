@@ -6,11 +6,11 @@ import nerdfont
 with open("readme.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-REL_VERSION = "4"
+REL_VERSION = "6"
 
 setup(
     name="nerdfont",
-    version=nerdfont.VERSION + ".post" + REL_VERSION,
+    version=nerdfont.__version__ + ".post" + REL_VERSION,
     description="The Nerd Font icon set for python",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,9 +19,6 @@ setup(
     maintainer="Larspolo",
     packages=find_packages(),
     url="https://github.com/Larspolo/nerdfont-python",
-    install_requires=[
-        "pypandoc>=1.15",
-    ],
     classifiers=[
         "Environment :: Console",
         "Programming Language :: Python :: 3",
