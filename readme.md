@@ -1,21 +1,27 @@
 # Nerd Font icons for python
 
-## Installation 
+## Installation
 
 ```{.sh}
 pip install nerdfont
 ```
 
-## Usage 
+## Usage
 
 ```{.py}
 import nerdfont as nf
 
-print(nf.icons['fa-thumbs_up'])
+print(nf.icons['fa-thumbs_up']) # Supports both without prefix
+>>> 
+print(nf.icons['nf-fa-thumbs_up']) # And with `nf-` prefix
 >>> 
 ```
 
-## Build 
+All non-removed icons that are available on in the [Nerd Fonts
+cheat-sheet](https://www.nerdfonts.com/cheat-sheet) should be included in this
+package.
+
+## Build
 
 ```{.sh}
 # Run the generate script to download nerd font's character mapping
@@ -32,6 +38,8 @@ python3 -m twine upload --repository testpypi dist/*
 
 ## License
 
-The code in this repository is licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+The code in this repository is licensed under
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
-The character codes included with this package are part of the [Nerd Font project](https://github.com/ryanoasis/nerd-fonts).
+The character codes included with this package are part of the
+[Nerd Font project](https://github.com/ryanoasis/nerd-fonts).

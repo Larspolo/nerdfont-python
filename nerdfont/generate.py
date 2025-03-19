@@ -15,6 +15,15 @@ import requests
 
 INDENT = " " * 4
 
+def add_icon(out, icon_name, icon):
+    # dict entry with character code
+    entry = f"'{icon_name}': '\\u{icon['code']}',"
+    indent_to = 80 - 3 - len(INDENT)
+    entry += " " * (indent_to - len(entry))  # pad
+    # comment with nerd font icon
+    entry += f"# {icon['char']}"
+
+    out.write(INDENT + entry + "\n")
 
 def main(uri, version):
     icons_dict = requests.get(uri).json()
@@ -34,13 +43,10 @@ def main(uri, version):
     out.write("\n")
     out.write("icons = {\n")
     for icon_name, icon in icons_dict.items():
-        # dict entry with character code
-        entry = f"'{icon_name}': '\\u{icon['code']}',"
-        indent_to = 80 - 3 - len(INDENT)
-        entry += " " * (indent_to - len(entry))  # pad
-        # comment with nerd font icon
-        entry += f"# {icon['char']}"
-        out.write(INDENT + entry + "\n")
+        add_icon(out, icon_name, icon)
+        # Nerd font displays an extra `nf-` prefix in
+        # https://www.nerdfonts.com/cheat-sheet
+        add_icon(out, f"nf-{icon_name}", icon)
 
     out.write("}\n")
 
