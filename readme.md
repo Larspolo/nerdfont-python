@@ -11,7 +11,7 @@ pip install nerdfont
 ```{.py}
 import nerdfont as nf
 
-print(nf.icons['thumbs-up'])
+print(nf.icons['fa-thumbs_up'])
 >>> 
 ```
 
