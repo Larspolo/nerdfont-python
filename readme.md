@@ -29,11 +29,11 @@ package.
 # in the nerdfont subdirectory.  Note that this pulls the latest revision
 # on the master branch.  You can easily change this  with the --revision flag.
 
-rm -r build dist nerdfont.egg-info && \
+rm -rf build dist nerdfont.egg-info && \
 python3 ./nerdfont/generate.py > ./nerdfont/icons.py && \
 python3 -m build && \
 python3 -m pip install . && \
-python3 -m twine upload --repository testpypi dist/*
+python3 -m twine upload dist/*
 ```
 
 ## License
