@@ -23,12 +23,11 @@ print(nf.icons['fa-thumbs_up'])
 # in the nerdfont subdirectory.  Note that this pulls the latest revision
 # on the master branch.  You can easily change this  with the --revision flag.
 
-python3 ./nerdfont/generate.py > ./nerdfont/icons.py
-
 rm -r build dist nerdfont.egg-info && \
+python3 ./nerdfont/generate.py > ./nerdfont/icons.py && \
 python3 -m build && \
 python3 -m pip install . && \
-python3 -m twine --repository testpypi upload dist/*
+python3 -m twine upload --repository testpypi dist/*
 ```
 
 ## License

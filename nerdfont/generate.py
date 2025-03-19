@@ -9,59 +9,59 @@ Which was inspired by fontawesome-markdown:
 https://github.com/bmcorser/fontawesome-markdown/blob/master/scripts/update_icon_list.py
 """
 
-import requests
 import sys
 
-INDENT = ' ' * 4
+import requests
+
+INDENT = " " * 4
 
 
-def main(uri, version, include_aliases):
+def main(uri, version):
     icons_dict = requests.get(uri).json()
     meta_data = icons_dict.pop("METADATA", {})
-    site = meta_data.get('development-website', 'https://github.com/ryanoasis/nerd-fonts')
-    version = meta_data.get('version', version)
+    site = meta_data.get(
+        "development-website", "https://github.com/ryanoasis/nerd-fonts"
+    )
+    version = meta_data.get("version", version)
 
     out = sys.stdout
 
     out.write("# -*- coding: utf-8 -*-\n")
-    out.write(
-        "# This file was generated automatically by nerdfont-python\n")
-    out.write(
-        f"# It contains the icon set from: {site}\n"
-    )
-    out.write('\n')
+    out.write("# This file was generated automatically by nerdfont-python\n")
+    out.write(f"# It contains the icon set from: {site}\n")
+    out.write("\n")
     out.write(f"VERSION = '{version}'\n")
-    out.write('\n')
-    out.write('icons = {\n')
+    out.write("\n")
+    out.write("icons = {\n")
     for icon_name, icon in icons_dict.items():
         # dict entry with character code
         entry = f"'{icon_name}': '\\u{icon['code']}',"
         indent_to = 80 - 3 - len(INDENT)
-        entry += ' ' * (indent_to - len(entry))  # pad
+        entry += " " * (indent_to - len(entry))  # pad
         # comment with nerd font icon
         entry += f"# {icon['char']}"
-        out.write(INDENT + entry + '\n')
+        out.write(INDENT + entry + "\n")
 
-    out.write('}\n')
+    out.write("}\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(
-        description=
-        "Generate icons.py, containing a python mapping for nerd font icons"
+        description="Generate icons.py, containing a python mapping for nerd font icons"
     )
     parser.add_argument(
-        '--revision',
-        help=
-        "Nerd font version to use. Should correspond to a git branch name.",
-        default='master')
+        "--revision",
+        help="Nerd font version to use. Should correspond to a git branch name.",
+        default="master",
+    )
     args = parser.parse_args()
 
     REVISION = args.revision
-    URI = ('https://raw.githubusercontent.com'
-           '/ryanoasis/nerd-fonts/%s/glyphnames.json' %
-           REVISION)
+    URI = (
+        "https://raw.githubusercontent.com"
+        "/ryanoasis/nerd-fonts/%s/glyphnames.json" % REVISION
+    )
 
-    main(URI, args.revision, args.include_aliases)
+    main(URI, args.revision)

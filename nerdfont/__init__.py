@@ -1,1 +1,1 @@
-from .icons import icons, VERSION  # noqa: F401
+from .icons import VERSION, icons  # noqa: F401
