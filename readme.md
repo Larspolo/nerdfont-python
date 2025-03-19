@@ -25,9 +25,10 @@ print(nf.icons['fa-thumbs_up'])
 
 python3 ./nerdfont/generate.py > ./nerdfont/icons.py
 
-python3 setup.py build
-
-python3 setup.py install
+rm -r build dist nerdfont.egg-info && \
+python3 -m build && \
+python3 -m pip install . && \
+python3 -m twine --repository testpypi upload dist/*
 ```
 
 ## License

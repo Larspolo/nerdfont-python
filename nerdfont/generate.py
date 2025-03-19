@@ -55,12 +55,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '--revision',
         help=
-        "Version of font of nerd font to download and use. Should correspond to a git branch name.",
+        "Nerd font version to use. Should correspond to a git branch name.",
         default='master')
-    parser.add_argument(
-        '--include_aliases',
-        help="If enabled, also adds aliases for icons in the output.",
-        default=False)
     args = parser.parse_args()
 
     REVISION = args.revision
