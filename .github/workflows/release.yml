@@ -34,6 +34,12 @@ jobs:
         run: |
           python3 -m pip install .
 
+      # Check if version already exists
+      - name: Check if version exists
+        id: check_version
+        run: |
+          python3 -c "import requests; print(requests.get('https://pypi.org/pypi/nerdfont/json').json()['releases'].keys())" | grep -q "$(python3 setup.py --version)" && echo "Version already exists" && exit 1 || echo "Version does not exist"
+        
       - name: Upload to PyPI
         env:
           PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
