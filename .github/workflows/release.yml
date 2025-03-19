@@ -1,0 +1,41 @@
+name: Update Nerd Fonts Pypi package
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # Runs daily at 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update_nerdfont:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install -r requirements.txt
+
+      - name: Generate Icons
+        run: |
+          python3 ./nerdfont/generate.py > ./nerdfont/icons.py
+
+      - name: Build Package
+        run: |
+          python3 -m build
+
+      - name: Install Package
+        run: |
+          python3 -m pip install .
+
+      - name: Upload to TestPyPI
+        env:
+          TESTPYPI_API_TOKEN: ${{ secrets.TESTPYPI_API_TOKEN }}
+        run: |
+          python3 -m twine upload --repository testpypi dist/* -u __token__ -p "$TESTPYPI_API_TOKEN"
