@@ -38,4 +38,4 @@ jobs:
         env:
           TESTPYPI_API_TOKEN: ${{ secrets.TESTPYPI_API_TOKEN }}
         run: |
-          python3 -m twine upload --repository testpypi dist/* -u __token__ -p "$TESTPYPI_API_TOKEN"
+          python3 -m twine upload --repository testpypi dist/* -u __token__ -p "$TESTPYPI_API_TOKEN" --verbose
