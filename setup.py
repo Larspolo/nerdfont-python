@@ -1,29 +1,25 @@
 from setuptools import setup
 import pypandoc
-import fontawesome
+import nerdfont
 
 REL_VERSION = '1'
 
 setup(
-    name='fontawesome',
-    packages=['fontawesome'],
-    version=fontawesome.VERSION + '-' + REL_VERSION,
-    description='The Font Awesome icon set for python',
+    name='nerdfont',
+    packages=['nerdfont'],
+    version=nerdfont.VERSION + '-' + REL_VERSION,
+    description='The Nerd Font icon set for python',
     long_description=pypandoc.convert_file('readme.md', 'rst'),
     license='Code: Apache License, Version 2.0, Icons: SIL OFL 1.1',
-    author='Justin Buchanan',
-    author_email='justbuchanan@gmail.com',
-    maintainer='Justin Buchanan',
-    maintainer_email='justbuchanan@gmail.com',
-    url='https://github.com/justbuchanan/fontawesome-python',
+    author='Larspolo',
+    maintainer='Larspolo',
+    url='https://github.com/Larspolo/nerdfont-python',
     install_requires=[
         'pyyaml>=5.0,<=6',  
     ],
     classifiers=[
         'Environment :: Console',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
     ],
     test_suite='nose.collector',
     tests_require=['nose', 'coverage'],

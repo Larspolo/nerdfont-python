@@ -1,5 +1,6 @@
 __pycache__
-fontawesome/icons.py
+nerdfont/icons.py
 build/
 dist/
 *.egg-info
+venv/
